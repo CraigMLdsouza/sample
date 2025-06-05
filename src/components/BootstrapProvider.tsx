@@ -9,18 +9,20 @@ export default function BootstrapProvider({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    // Initialize any Bootstrap components that need JavaScript
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => {
-      // @ts-expect-error bootstrap.Tooltip is not defined
-      return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      // Initialize any Bootstrap components that need JavaScript
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => {
+        // @ts-expect-error bootstrap.Tooltip is not defined
+        return new window.bootstrap.Tooltip(tooltipTriggerEl);
+      });
 
-    return () => {
-      // Cleanup tooltips when component unmounts
-      tooltipList.forEach(tooltip => tooltip.dispose());
-    };
+      return () => {
+        // Cleanup tooltips when component unmounts
+        tooltipList.forEach(tooltip => tooltip.dispose());
+      };
+    }
   }, []);
 
   return <>{children}</>;
-} 
+}
