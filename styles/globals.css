@@ -1,6 +1,63 @@
-:root {
-  --background: #f8f9fa;
-  --foreground: #171717;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+  }
+
+  .input-primary {
+    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm;
+  }
+
+  .chat-container {
+    @apply w-100 mx-auto px-2 px-md-0 d-flex flex-column align-items-center;
+    max-width: 700px;
+    min-height: 100vh;
+    background: #f7f7fa;
+  }
+  .chat-scroll {
+    @apply flex-grow-1 overflow-auto w-100;
+    padding-bottom: 100px;
+    padding-top: 70px;
+  }
+  .chat-bubble {
+    @apply mb-3;
+  }
+  .chat-bubble-user {
+    background: linear-gradient(90deg, #6f42c1 0%, #4f8cff 100%);
+    color: #fff;
+    border-radius: 1.5rem 0.5rem 1.5rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(79,140,255,0.08);
+  }
+  .chat-bubble-ai {
+    background: #fff;
+    color: #222;
+    border-radius: 0.5rem 1.5rem 1.5rem 1.5rem;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(111,66,193,0.06);
+  }
+  .chat-avatar {
+    @apply rounded-circle bg-light d-flex align-items-center justify-content-center shadow;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 
 html, body {
