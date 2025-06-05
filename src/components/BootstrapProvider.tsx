@@ -12,7 +12,7 @@ export default function BootstrapProvider({
     // Initialize any Bootstrap components that need JavaScript
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => {
-      // @ts-ignore - Bootstrap is loaded globally
+      // @ts-expect-error bootstrap.Tooltip is not defined
       return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 

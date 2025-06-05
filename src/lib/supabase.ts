@@ -51,6 +51,7 @@ export async function createConversation(userId: string, title: string = 'New Ch
     console.error('Error inserting new conversation into Supabase:', error);
     const customError = new Error(error.message || 'Failed to create conversation in Supabase');
     if (error.code) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (customError as any).code = error.code;
     }
     throw customError;
